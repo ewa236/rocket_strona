@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocket Mango</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      color: #2d2d2d;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2d2d2d;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #ff9800;
+    }
+
+    .hero-text p {
+      color: #505050;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .buttons a {
+      padding: 15px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #ff9800;
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+    }
+
+    .btn-secondary {
+      border: 2px solid #ff9800;
+      color: #ff9800;
+      background-color: transparent;
+    }
+
+    .chat-bubbles {
+      position: relative;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .rocket {
+      height: 150px;
+    }
+
+    .bubble {
+      position: absolute;
+      border: 2px solid;
+      padding: 10px 15px;
+      border-radius: 15px;
+      background: white;
+      font-size: 16px;
+    }
+
+    .bubble.orange {
+      border-color: #ff9800;
+    }
+
+    .bubble.green {
+      border-color: #4caf50;
+    }
+
+    .bubble1 { top: 20px; left: 10px; }
+    .bubble2 { bottom: 40px; left: 0; }
+    .bubble3 { top: 30px; right: 20px; }
+    .bubble4 { bottom: 10px; right: 20px; }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text, .chat-bubbles {
+        max-width: 100%;
+      }
+
+      .chat-bubbles {
+        margin-top: 40px;
+      }
+    }
+
+    html {
+  scroll-behavior: smooth;
+    }
+
+    /* Animacja na przyciski */
+.buttons a,
+a.btn-primary,
+a.btn-secondary,
+section#produkty div[style*="background: white"] a,
+section#funkcje div[style*="background: white"] {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buttons a:hover,
+a.btn-primary:hover,
+a.btn-secondary:hover,
+section#produkty div[style*="background: white"]:hover,
+section#funkcje div[style*="background: white"]:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+  cursor: pointer;
+}
+
+/* Animacja na okienka/bubble */
+    .bubble,
+    section#produkty > div > div,
+    section#funkcje > div > div,
+    section#opinie > div > div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .bubble:hover,
+    section#produkty > div > div:hover,
+    section#funkcje > div > div:hover,
+    section#opinie > div > div:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 15px rgba(255, 152, 0, 0.3);
+    cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo_biakly.png" alt="Rocket Mango logo" style="width: 60px; height: auto;">
+      <strong>Rocket Mango</strong>
+    </div>
+    <nav>
+      <a href="#">Strona główna</a>
+      <a href="#produkty">Produkty</a>
+      <a href="#funkcje">Funkcje</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Rewolucjonizuj komunikację z <span>AI</span></h1>
+      <p>Inteligentne chatboty i agenci AI, którzy rozumieją Twoich klientów i zwiększają efektywność Twojego biznesu.</p>
+      <div class="buttons">
+        <a href="#kontakt" class="btn-primary">Sprawdź teraz</a>
+      </div>
+    </div>
+    <div class="chat-bubbles">
+      <img src="rocket.png" alt="Rakieta" class="rocket" style="width: 150px; height: auto;">
+      <div class="bubble orange bubble1">Jak mogę pomóc?</div>
+      <div class="bubble orange bubble2">Zawsze dostępny</div>
+      <div class="bubble green bubble3">Szybka odpowiedź!</div>
+      <div class="bubble green bubble4">Personalizacja AI</div>
+    </div>
+  </section>
+
+  <script>
+     // przykład animacji rakiety
+    document.addEventListener("DOMContentLoaded", () => {
+    const rocket = document.querySelector(".rocket");
+    rocket.style.transition = "transform 2s ease-in-out";
+    rocket.style.transform = "translateY(-10px)";
+    setInterval(() => {
+      rocket.style.transform = rocket.style.transform === "translateY(-10px)" ? "translateY(0)" : "translateY(-10px)";
+    }, 2000);
+    });
+    </script>
+
+
+    <!-- Nasze Rozwiązania -->
+<section id="produkty" style="padding: 80px 40px; background-color: #f9f9f9;">
+  <h2 style="font-size: 36px; color: #ff9800; text-align: center;">Nasze Rozwiązania</h2>
+  <div style="display: flex; gap: 30px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+    
+    <!-- Chatbot Asystent -->
+    <div style="flex: 1; max-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+      <img src="chat.png" alt="chat bubble" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+      <h3>Chatbot Asystent</h3>
+      <p>Inteligentny chatbot, który odpowiada na pytania klientów 24/7, zwiększając konwersję i satysfakcję.</p>
+      <a href="#kontakt" style="display: inline-block; margin-top: 15px; text-decoration: none; color: #ff9800; font-weight: bold;">Dowiedz się więcej →</a>
+    </div>
+
+    <!-- Agent AI Premium -->
+    <div style="flex: 1; max-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+      <img src="armor.png" alt="armor bubble" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+      <h3>Agent AI Premium</h3>
+      <p>Zaawansowany agent AI, który analizuje dane, przewiduje potrzeby i dostarcza spersonalizowane rozwiązania.</p>
+      <a href="#kontakt" style="display: inline-block; margin-top: 15px; text-decoration: none; color: #44A048; font-weight: bold;">Dowiedz się więcej →</a>
+    </div>
+
+    <!-- Rocket Mango Enterprise -->
+    <div style="flex: 1; max-width: 300px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+      <img src="chat2.png" alt="chat bubble" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+      <h3>Rocket Mango Enterprise</h3>
+      <p>Kompleksowe rozwiązanie AI dla dużych firm, integrujące chatboty, agentów i analitykę w jednym miejscu.</p>
+      <a href="#kontakt" style="display: inline-block; margin-top: 15px; text-decoration: none; color: #ff9800; font-weight: bold;">Dowiedz się więcej →</a>
+    </div>
+
+  </div>
+</section>
+
+        <!-- Dlaczego Rocket Mango -->
+    <section id="funkcje" style="padding: 80px 40px; background-color: #f9f9f9;">
+    <h2 style="font-size: 36px; color: #ff9800; text-align: center;">Dlaczego Rocket Mango?</h2>
+    <div style="display: flex; gap: 30px; justify-content: center; margin-top: 100px; flex-wrap: wrap;">
+
+        <!-- Błyskawiczna odpowiedź -->
+        <div style="flex: 1; max-width: 280px; height: 200px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+        <img src="fast.png" alt="błyskawica" style="max-width: 100%; height: 50px; margin-bottom: 15px;">
+        <p></p>
+        <h3 style="margin: 0 0 10px;">Błyskawiczna odpowiedź</h3>
+        <p style="margin: 0; font-size: 15px;">Natychmiastowe odpowiedzi na pytania klientów, bez czekania.</p>
+        </div>
+
+        <!-- Personalizacja -->
+        <div style="flex: 1; max-width: 280px; height: 200px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+        <img src="calendar.png" alt="kalendarz" style="max-width: 100%; height: 50px; margin-bottom: 15px;">
+        <p></p>
+        <h3 style="margin: 0 0 10px;">Personalizacja</h3>
+        <p style="margin: 0;">Dostosowanie do Twojej marki i potrzeb klientów.</p>
+        </div>
+
+        <!-- Bezpieczeństwo -->
+        <div style="flex: 1; max-width: 280px; height: 200px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+        <img src="armor2.png" alt="tarcza" style="max-width: 100%; height: 50px; margin-bottom: 15px;">
+        <p></p>
+        <h3 style="margin: 0 0 10px;">Bezpieczeństwo</h3>
+        <p style="margin: 0;">Najwyższe standardy ochrony danych i prywatności.</p>
+        </div>
+
+        <!-- Analityka -->
+        <div style="flex: 1; max-width: 280px; height: 200px; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+        <img src="wykres.png" alt="wykres" style="max-width: 100%; height: 50px; margin-bottom: 15px;">
+        <p></p>
+        <h3 style="margin: 0 0 10px;">Analityka</h3>
+        <p style="margin: 0;">Szczegółowe raporty i wgląd w zachowania użytkowników.</p>
+        </div>
+
+    </div>
+    </section>
+
+
+
+         <!-- Opinie -->
+    <section id="opinie" style="padding: 80px 40px;">
+    <h2 style="font-size: 36px; color: #ff9800; text-align: center;">Co mówią nasi klienci</h2>
+    <div style="display: flex; gap: 30px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+
+        <!-- Opinia 1 -->
+        <div style="flex: 1; max-width: 300px; background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <img src="ak.png" alt="avatar" style="width: 48px; height: 48px; border-radius: 50%;">
+            <div>
+            <strong>Anna Kowalska</strong><br>
+            <em style="color: #777;">E-commerce Manager</em>
+            </div>
+        </div>
+        <p>"Chatbot od Rocket Mango zwiększył naszą konwersję o 35%. Klienci otrzymują natychmiastowe odpowiedzi, a my oszczędzamy czas i zasoby."</p>
+        <div style="color: #ff9800; margin-top: auto;">★★★★★</div>
+        </div>
+
+        <!-- Opinia 2 -->
+        <div style="flex: 1; max-width: 300px; background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <img src="tn.png" alt="avatar" style="width: 48px; height: 48px; border-radius: 50%;">
+            <div>
+            <strong>Tomasz Nowak</strong><br>
+            <em style="color: #777;">CEO, TechSolutions</em>
+            </div>
+        </div>
+        <p>"Agent AI Premium to rewolucja w obsłudze klienta. Nasz zespół może skupić się na strategicznych zadaniach, podczas gdy AI zajmuje się rutynowymi zapytaniami."</p>
+        <div style="color: #ff9800; margin-top: auto;">★★★★★</div>
+        </div>
+
+        <!-- Opinia 3 -->
+        <div style="flex: 1; max-width: 300px; background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <img src="mz.png" alt="avatar" style="width: 48px; height: 48px; border-radius: 50%;">
+            <div>
+            <strong>Marta Zielińska</strong><br>
+            <em style="color: #777;">Customer Success Manager</em>
+            </div>
+        </div>
+        <p>"Wdrożenie Rocket Mango Enterprise pozwoliło nam zautomatyzować 70% zapytań klientów. ROI przekroczył nasze oczekiwania już po 3 miesiącach."</p>
+        <div style="color: #ff9800; margin-top: auto;">★★★★★</div>
+        </div>
+
+    </div>
+    </section>
+
+
+
+   <!-- CTA -->
+    <section style="padding: 80px 40px; background-color: #ff9800; text-align: center; color: white;">
+    <h2 style="font-size: 36px; max-width: 700px; margin: 0 auto 40px;">Gotowy na rewolucję AI?</h2>
+    <p style="font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.4;">
+        Dołącz do setek firm, które już korzystają z rozwiązań Rocket Mango i<br> zwiększ efektywność swojego biznesu.
+    </p>
+    <div style="margin-top: 40px;">
+        <a href="#kontakt" 
+        style="
+            display: inline-block; 
+            border: 2px solid white; 
+            color: white; 
+            padding: 14px 40px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+        "
+        onmouseover="this.style.backgroundColor='white'; this.style.color='#ff9800';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';"
+        >
+        Dowiedz się więcej
+        </a>
+    </div>
+    </section>
+
+
+    <!-- Kontakt -->
+    <section id="kontakt" style="padding: 80px 40px;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px;">
+
+        <!-- Tekst po prawej stronie nad danymi kontaktowymi -->
+        <div style="flex: 1; min-width: 280px; order: 2; display: flex; flex-direction: column; justify-content: flex-start;">
+        <h2 style="font-size: 36px; margin-bottom: 20px;">Skontaktuj się z nami</h2>
+        <p style="margin-bottom: 10px;">
+           Masz pytania? Chcesz dowiedzieć się więcej o naszych rozwiązaniach? Wypełnij formularz - gwarantujemy sprawną i szybką odpowiedź od naszego zespołu.
+        </p>
+
+        <!-- Dane kontaktowe pod tekstem -->
+        <div style="margin-top: 40px;">
+            <p>
+            <strong>Email:</strong><br>
+            <a href="mailto:rocketmango.ai@gmail.com" style="color: #ff9800; text-decoration: none;">rocketmango.ai@gmail.com</a>
+            </p>
+            <p><strong>Telefon:</strong><br>+48 576 145 795</p>
+            <p>
+            <strong>Social media:</strong><br>
+            <a href="https://www.instagram.com/rocketmango.ai" target="_blank" rel="noopener" style="margin-right: 15px; text-decoration: none; color: #ff9800; font-size: 24px;">
+            <img src="instagram.jpg" alt="instagram" style="width: 48px; height: 48px; border-radius: 50%;">
+            </a>
+            <a href="https://www.linkedin.com/in/ewa-balcerowiak-342969362/" target="_blank" rel="noopener" style="text-decoration: none; color: #ff9800; font-size: 24px;">
+            <img src="linkedin.jpg" alt="linkedin" style="width: 53px; height: 50px; border-radius: 50%;">
+            </a>
+            </p>
+        </div>
+        </div>
+
+        <!-- Formularz + nagłówek w okienku -->
+        <div style="flex: 1; min-width: 300px; order: 3; background: #fff; padding: 30px 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); color: #333;">
+        
+    <form>
+        <label for="name" style="display: block; margin-bottom: 5px; font-weight: 600;">Imię i nazwisko</label>
+        <input id="name" type="text" value="Jan Kowalski" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
+                onfocus="if(this.value=='Jan Kowalski') this.value=''; this.style.color='#000';" 
+                onblur="if(this.value=='') {this.value='Jan Kowalski'; this.style.color='#666';}">
+
+        <label for="email" style="display: block; margin-bottom: 5px; font-weight: 600;">Email</label>
+        <input id="email" type="email" value="jan@firma.pl" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
+                onfocus="if(this.value=='jan@firma.pl') this.value=''; this.style.color='#000';" 
+                onblur="if(this.value=='') {this.value='jan@firma.pl'; this.style.color='#666';}">
+
+        <label for="phone" style="display: block; margin-bottom: 5px; font-weight: 600;">Numer telefonu</label>
+        <input id="phone" type="tel" value="+48 123 456 789" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
+                onfocus="if(this.value=='+48 123 456 789') this.value=''; this.style.color='#000';" 
+                onblur="if(this.value=='') {this.value='+48 123 456 789'; this.style.color='#666';}">
+
+        <label for="company" style="display: block; margin-bottom: 5px; font-weight: 600;">Firma</label>
+        <input id="company" type="text" value="Nazwa Firmy" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
+                onfocus="if(this.value=='Nazwa Firmy') this.value=''; this.style.color='#000';" 
+                onblur="if(this.value=='') {this.value='Nazwa Firmy'; this.style.color='#666';}">
+
+        <label for="message" style="display: block; margin-bottom: 5px; font-weight: 600;">Wiadomość</label>
+        <textarea id="message" rows="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;"
+                    onfocus="if(this.value=='Jak możemy pomóc?') this.value=''; this.style.color='#000';" 
+                    onblur="if(this.value=='') {this.value='Jak możemy pomóc?'; this.style.color='#666';}">Jak możemy pomóc?</textarea>
+
+        <button type="submit" style="padding: 12px 25px; background-color: #ff9800; color: white; border: none; border-radius: 30px; width: 100%; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
+           <a href="https://deafultname.app.n8n.cloud/form-test/4724affb-96e9-4e34-8499-ffcd58393fdf">Wyślij wiadomość</a> 
+        </button>
+    </form>
+
+
+    
+        </div>
+
+    </div>
+    </section>
+
+
+    <footer style="background-color: #111; color: #aaa; padding: 60px 40px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: auto;">
+
+            <div style="flex: 1; min-width: 280px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="logo.png" alt="logo" style="height: 50px; display: block;">
+                <h3 style="color: white; margin: 0;">Rocket Mango</h3>
+            </div>
+            <p style="margin-top: 10px; max-width: 300px; line-height: 1.4;">
+                Rewolucjonizujemy komunikację z klientami dzięki inteligentnym chatbotom i agentom AI.
+            </p>
+            </div>
+
+            <div style="flex: 1; min-width: 280px;">
+            <h4 style="color: white; margin-bottom: 10px;">Kontakt</h4>
+            <p style="margin: 0; line-height: 1.6;">
+                rocketmango.ai@gmail.com<br>
+                +48 576 145 795
+            </p>
+
+            <div style="margin-top: 30px;">
+                <h4 style="color: white; margin-bottom: 10px;">Newsletter</h4>
+                <p>Zapisz się, aby otrzymywać najnowsze informacje i aktualizacje.</p>
+                <div style="display: flex; max-width: 300px;">
+                <input type="email" placeholder="Twój email" style="padding: 10px; border-radius: 8px 0 0 8px; border: none; flex: 1;">
+                <button style="padding: 10px 15px; background-color: #ff9800; border: none; color: white; border-radius: 0 8px 8px 0; cursor: pointer;">→</button>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <hr style="margin: 30px 0; border-color: #333;">
+        <div style="text-align: center; font-size: 14px; color: #666;">
+            © 2025 Rocket Mango. Wszelkie prawa zastrzeżone. |
+            <a href="#" style="color: #666; text-decoration: none;">Polityka prywatności</a> |
+            <a href="#" style="color: #666; text-decoration: none;">Warunki korzystania</a> |
+            <a href="#" style="color: #666; text-decoration: none;">Cookies</a>
+        </div>
+    </footer>
+
+   <script type="module">
+  import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
+
+  Chatbot.init({
+    chatflowid: "96cf5b79-a27d-45ae-954a-ce037e709f6e",
+    apiHost: "https://flowiseai-railway-production-ca84.up.railway.app",
+    chatflowConfig: {},
+    observersConfig: {},
+    theme: {
+      button: {
+        backgroundColor: '#F89D00', // mango pomarańczowy
+        right: 20,
+        bottom: 20,
+        size: 48,
+        dragAndDrop: true,
+        iconColor: 'white',
+        customIconSrc: 'https://raw.githubusercontent.com/ewa236/flowise-csv-downloader/refs/heads/main/communication%20(2).png',
+        shadow: '0 4px 10px rgba(255,130,67,0.6)'
+      },
+      tooltip: {
+        showTooltip: false
+      },
+      
+      customCSS: `
+        .chat-window .message-bubble {
+          border-radius: 20px !important;
+          padding: 12px 18px !important;
+        }
+        .chat-window .bot-message {
+          background-color: #FFE3C6 !important;
+          color: #4a4a4a !important;
+        }
+        .chat-window .user-message {
+          background-color: #FF8243 !important;
+          color: white !important;
+        }
+        .chat-window .avatar {
+          border-radius: 50% !important;
+          border: 2px solid #FF8243 !important;
+        }
+        .chat-window .header {
+          background-color: #FF8243 !important;
+          color: white !important;
+          font-weight: 600 !important;
+          font-size: 20px !important;
+          border-top-left-radius: 12px !important;
+          border-top-right-radius: 12px !important;
+        }
+        .chat-window .input-area {
+          border-top: 1px solid #FFB980 !important;
+          background-color: #fff !important;
+        }
+        .chat-window .input-area input {
+          color: #4a4a4a !important;
+          font-size: 16px !important;
+        }
+
+        .chat-window .starter-prompt {
+        background-color: #548C00 !important;
+        color: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 10px 16px !important;
+        font-weight: 500 !important;
+        margin: 6px 4px !important;
+        display: inline-block !important;
+        cursor: pointer !important;
+        }
+      `,
+      chatWindow: {
+        showTitle: true,
+        title: 'Mango Bot',
+        welcomeMessage: 'Witaj! Jestem Mango Bot — Twój doradca od AI i chatbotów. Gotowy na start? 🚀',
+        errorMessage: 'Coś się zacięło... Przeładuj okno lub skontaktuj się z naszym zespołem 🚑',
+        backgroundColor: '#F5F5F5',
+        height: 500,
+        width: 350,
+        fontSize: 13,
+        starterPrompts: [
+          "Jak chatbot może pomóc mojej firmie?",
+          "Jak wygląda proces wdrożenia chatbota?"
+        ],
+        starterPromptFontSize: 13,
+        clearChatOnReload: true,
+        renderHTML: true,
+        botMessage: {
+          backgroundColor: '#F89D00',
+          textColor: '#ffffff',
+          showAvatar: true,
+          avatarSrc: 'avatar5.png'
+        },
+        userMessage: {
+          backgroundColor: '#548C00',
+          textColor: '#ffffff',
+          showAvatar: true,
+          avatarSrc: 'avatar2.png' // lokalny avatar — musi być dostępny z serwera
+        },
+        textInput: {
+          placeholder: 'Napisz wiadomość...',
+          backgroundColor: '#fff',
+          textColor: '#4a4a4a',
+          sendButtonColor: '#FF8243',
+          maxChars: 200,
+          maxCharsWarningMessage: 'Przekroczyłeś limit znaków (200).',
+          autoFocus: true,
+          sendMessageSound: false,
+          receiveMessageSound: false
+        },
+        feedback: {
+          color: '#4a4a4a'
+        },
+        dateTimeToggle: {
+          date: true,
+          time: true
+        },
+        footer: {
+          textColor: '#4a4a4a',
+          text: 'Powered by',
+          company: 'Rocket Mango',
+          companyLink: 'https://yourwebsite.com'
+        }
+      }
+    }
+  });
+</script>
+
+
+
+
+
+</body>
+</html>
