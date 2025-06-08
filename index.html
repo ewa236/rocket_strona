@@ -405,38 +405,36 @@ section#funkcje div[style*="background: white"]:hover {
         </div>
 
         <!-- Formularz + nagłówek w okienku -->
-        <div style="flex: 1; min-width: 300px; order: 3; background: #fff; padding: 30px 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); color: #333;">
+       <div style="flex: 1; min-width: 300px; order: 3; background: #fff; padding: 30px 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); color: #333;">
         
-    <form>
-        <label for="name" style="display: block; margin-bottom: 5px; font-weight: 600;">Imię i nazwisko</label>
-        <input id="name" type="text" value="Jan Kowalski" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
-                onfocus="if(this.value=='Jan Kowalski') this.value=''; this.style.color='#000';" 
-                onblur="if(this.value=='') {this.value='Jan Kowalski'; this.style.color='#666';}">
+    <form method="POST" action="https://deafultname.app.n8n.cloud/webhook/849091f8-222c-4d09-8674-c6ed338b8b91">
+    <label for="name" style="display: block; margin-bottom: 5px; font-weight: 600;">Imię i nazwisko</label>
+    <input id="name" name="name" type="text" placeholder="Jan Kowalski"
+           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #000;" />
 
-        <label for="email" style="display: block; margin-bottom: 5px; font-weight: 600;">Email</label>
-        <input id="email" type="email" value="jan@firma.pl" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
-                onfocus="if(this.value=='jan@firma.pl') this.value=''; this.style.color='#000';" 
-                onblur="if(this.value=='') {this.value='jan@firma.pl'; this.style.color='#666';}">
+    <label for="email" style="display: block; margin-bottom: 5px; font-weight: 600;">Email</label>
+    <input id="email" name="email" type="email" placeholder="jan@firma.pl"
+           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #000;" />
 
-        <label for="phone" style="display: block; margin-bottom: 5px; font-weight: 600;">Numer telefonu</label>
-        <input id="phone" type="tel" value="+48 123 456 789" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
-                onfocus="if(this.value=='+48 123 456 789') this.value=''; this.style.color='#000';" 
-                onblur="if(this.value=='') {this.value='+48 123 456 789'; this.style.color='#666';}">
+    <label for="phone" style="display: block; margin-bottom: 5px; font-weight: 600;">Numer telefonu</label>
+    <input id="phone" name="phone" type="tel" placeholder="+48 123 456 789"
+           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #000;" />
 
-        <label for="company" style="display: block; margin-bottom: 5px; font-weight: 600;">Firma</label>
-        <input id="company" type="text" value="Nazwa Firmy" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;" 
-                onfocus="if(this.value=='Nazwa Firmy') this.value=''; this.style.color='#000';" 
-                onblur="if(this.value=='') {this.value='Nazwa Firmy'; this.style.color='#666';}">
+    <label for="company" style="display: block; margin-bottom: 5px; font-weight: 600;">Firma</label>
+    <input id="company" name="company" type="text" placeholder="Nazwa Firmy"
+           style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #000;" />
 
-        <label for="message" style="display: block; margin-bottom: 5px; font-weight: 600;">Wiadomość</label>
-        <textarea id="message" rows="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #666;"
-                    onfocus="if(this.value=='Jak możemy pomóc?') this.value=''; this.style.color='#000';" 
-                    onblur="if(this.value=='') {this.value='Jak możemy pomóc?'; this.style.color='#666';}">Jak możemy pomóc?</textarea>
+    <label for="message" style="display: block; margin-bottom: 5px; font-weight: 600;">Wiadomość</label>
+    <textarea id="message" name="message" rows="4" placeholder="Jak możemy pomóc?"
+              style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; color: #000;"></textarea>
 
-        <button type="submit" style="padding: 12px 25px; background-color: #ff9800; color: white; border: none; border-radius: 30px; width: 100%; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-           <a href="https://deafultname.app.n8n.cloud/form-test/4724affb-96e9-4e34-8499-ffcd58393fdf">Wyślij wiadomość</a> 
-        </button>
-    </form>
+    <button type="submit"
+            style="padding: 12px 25px; background-color: #ff9800; color: white; border: none; border-radius: 30px; width: 100%; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
+        Wyślij wiadomość
+    </button>
+</form>
+
+
 
 
     
